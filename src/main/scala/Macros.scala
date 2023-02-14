@@ -6,7 +6,8 @@ inline def printPositions(): Unit =
 
 private def printPositionsImpl()(using Quotes): Expr[Unit] = {
   import quotes.reflect.*
-  val sym = TypeRepr.of[TestClass].typeSymbol
+  val sym = TypeRepr.of[Future].typeSymbol   // foreign code - crashes the compiler
+//  val sym = TypeRepr.of[TestClass].typeSymbol  // own code - works
 
   println(s"${sym.pos.get.start} start")
   println(s"${sym.pos.get.startColumn} startColumn")
